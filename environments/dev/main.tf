@@ -1,10 +1,16 @@
 locals {
   project     = "cloudlab"
   environment = "dev"
+}
 
-  common_tags = {
-    Project     = local.project
-    Environment = local.environment
-    ManagedBy   = "Terraform"
-  }
+module "vpc" {
+  source = "../../modules/vpc"
+
+  vpc_cidr             = "10.0.0.0/16"
+  public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+  private_subnet_cidrs = ["10.0.11.0/24", "10.0.12.0/24"]
+  availability_zones   = ["eu-west-1a", "eu-west-1b"]
+
+  project_name = local.project
+  environment  = local.environment
 }

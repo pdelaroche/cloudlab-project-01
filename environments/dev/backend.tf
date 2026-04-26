@@ -1,1 +1,1 @@
-# Remote backend will be configured in Phase 2
+# Remote backend will be configured later if needed
